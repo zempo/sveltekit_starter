@@ -1,10 +1,15 @@
 # Personal Sveltekit Starter
 
-Personal project Starter
+Personal Svelte Project with Three.js and SCSS
 
-## Set Up
+### LINKS
 
-Complete the following steps to begin a new project
+1. [Favicon Generator](https://realfavicongenerator.net/)
+2. [Three.js](https://javascript.plainenglish.io/3d-with-svelte-and-three-js-f4366f342f9f)
+
+### SET UP
+
+> Be sure to update your package.json w/ your project details!
 
 ```bash
 # 1. First, clone to your machine
@@ -23,9 +28,7 @@ npm i
 mv example.env .env
 ```
 
-> Be sure to update your package.json w/ your project details!
-
-## Developing
+### DEV
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -36,7 +39,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### BUILD
 
 Svelte apps are built with _adapters_, which optimise your project for deployment to different environments.
 
