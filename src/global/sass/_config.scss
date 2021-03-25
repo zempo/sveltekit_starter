@@ -1,0 +1,198 @@
+$colors: (
+	app-white: rgb(236, 232, 232),
+	app-off-white: rgb(226, 221, 221),
+	dark: rgb(0, 0, 0),
+	null: rgba(0, 0, 0, 0),
+	success: rgb(0, 235, 94),
+	err: rgb(255, 90, 145),
+	focus: rgb(0, 149, 235)
+);
+
+$breakpoints: (
+	'phone': 400px,
+	'phone-wide': 480px,
+	'phablet': 560px,
+	'tablet-small': 640px,
+	'tablet': 768px,
+	'tablet-med': 900px,
+	'tablet-wide': 1024px,
+	'desktop-small': 1150px,
+	'desktop': 1248px,
+	'desktop-wide': 1440px,
+	'ultra-wide': 2000px
+);
+
+$mega-h1-font-sizes: (
+	null: 2rem,
+	map-get($breakpoints, 'phone-wide'): 2.8rem,
+	map-get($breakpoints, 'phablet'): 2.8rem,
+	map-get($breakpoints, 'tablet'): 3.2rem,
+	map-get($breakpoints, 'desktop'): 5rem,
+	map-get($breakpoints, 'ultra-wide'): 5.5rem
+);
+
+$mega-h2-font-sizes: (
+	null: 1.3rem,
+	map-get($breakpoints, 'phone-wide'): 1.9rem,
+	map-get($breakpoints, 'phablet'): 1.9rem,
+	map-get($breakpoints, 'tablet'): 2.25rem,
+	map-get($breakpoints, 'desktop'): 3.4rem,
+	map-get($breakpoints, 'ultra-wide'): 4rem
+);
+
+$h1-font-sizes: (
+	null: 1.35rem,
+	map-get($breakpoints, 'phone-wide'): 2rem,
+	map-get($breakpoints, 'phablet'): 2.4rem,
+	map-get($breakpoints, 'tablet'): 2.8rem,
+	map-get($breakpoints, 'desktop'): 3.2rem,
+	map-get($breakpoints, 'ultra-wide'): 4rem
+);
+
+$h2-font-sizes: (
+	null: 1.2rem,
+	map-get($breakpoints, 'phone-wide'): 1.6rem,
+	map-get($breakpoints, 'phablet'): 1.8rem,
+	map-get($breakpoints, 'tablet'): 2rem,
+	map-get($breakpoints, 'desktop'): 2.2rem,
+	map-get($breakpoints, 'ultra-wide'): 2.8rem
+);
+
+$h3-font-sizes: (
+	null: 1.1rem,
+	map-get($breakpoints, 'phablet'): 1.3rem,
+	map-get($breakpoints, 'tablet'): 1.4rem,
+	map-get($breakpoints, 'desktop'): 1.6rem,
+	map-get($breakpoints, 'ultra-wide'): 2rem
+);
+
+$p-font-sizes: (
+	null: 1rem,
+	map-get($breakpoints, 'phablet'): 1.2rem,
+	map-get($breakpoints, 'tablet'): 1.3rem,
+	map-get($breakpoints, 'desktop'): 1.4rem,
+	map-get($breakpoints, 'ultra-wide'): 1.6rem
+);
+
+$sub-font-sizes: (
+	null: 0.85rem,
+	map-get($breakpoints, 'phablet'): 0.95rem,
+	map-get($breakpoints, 'tablet'): 1rem,
+	map-get($breakpoints, 'desktop'): 1.2rem,
+	map-get($breakpoints, 'ultra-wide'): 1.3rem
+);
+
+// Functions
+@function responsive-theme($color) {
+	@if (lightness($color) > 70) {
+		@return map-get($colors, dark);
+	} @else {
+		@return map-get($colors, app-white);
+	}
+}
+
+// Mixins
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@if $fs-breakpoint == null {
+			font-size: $fs-font-size;
+		} @else {
+			@media screen and (min-width: $fs-breakpoint) {
+				font-size: $fs-font-size;
+			}
+		}
+	}
+}
+
+@mixin position($position, $args) {
+	@each $o in top right bottom left {
+		$i: index($args, $o);
+		@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+			#{$o}: nth($args, $i + 1);
+		}
+	}
+	position: $position;
+}
+// Positioning helpers
+@mixin absolute($args: '') {
+	@include position(absolute, $args);
+}
+@mixin fixed($args: '') {
+	@include position(fixed, $args);
+}
+@mixin relative($args: '') {
+	@include position(relative, $args);
+}
+
+@mixin push--auto {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+	$padding: unquote(($y / $x) * 100 + '%');
+	@if $pseudo {
+		&:before {
+			@include pseudo($pos: relative);
+			width: 100%;
+			padding-top: $padding;
+		}
+	} @else {
+		padding-top: $padding;
+	}
+}
+
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+	@include pseudo($pos: $position);
+	width: 0;
+	height: 0;
+	@if $round {
+		border-radius: 3px;
+	}
+	@if $direction == down {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+		margin-top: 0 - round($size / 2.5);
+	} @else if $direction == up {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+		margin-bottom: 0 - round($size / 2.5);
+	} @else if $direction == right {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-left: $size solid $color;
+		margin-right: -$size;
+	} @else if $direction == left {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-right: $size solid $color;
+		margin-left: -$size;
+	}
+}
+
+@mixin set-background($color) {
+	background-color: $color;
+	color: responsive-theme($color);
+}
+
+@mixin mq($width, $type: min) {
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media only screen and (#{$type}-width: $width) {
+			@content;
+		}
+	}
+}

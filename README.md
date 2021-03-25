@@ -1,20 +1,29 @@
-# create-svelte
+# Personal Sveltekit Starter
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+Personal project Starter
 
-## Creating a project
+## Set Up
 
-If you're seeing this, you've probably already done this step. Congrats!
+Complete the following steps to begin a new project
 
 ```bash
-# create a new project in the current directory
-npm init svelte@next
+# 1. First, clone to your machine
+git clone https://github.com/zempo/sveltekit_starter.git my_project
 
-# create a new project in my-app
-npm init svelte@next my-app
+# 2. Go to the project directory
+cd my_project
+
+# 3. Reset project .git history with this command
+rm -rf .git && git init
+
+# 4. Install project dependencies
+npm i
+
+# 5. Rename the example .env file, if you plan on using environmental variables in your project
+mv example.env .env
 ```
 
-> Note: the `@next` is temporary
+> Be sure to update your package.json w/ your project details!
 
 ## Developing
 
