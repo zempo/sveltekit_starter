@@ -28,6 +28,8 @@
 	"dependencies": {
 		"axios": "^0.21.1",
 		"cookie": "^0.4.1",
+		"dat.gui": "^0.7.7",
+		"gsap": "^3.6.1",
 		"three": "^0.126.1"
 	}
 }

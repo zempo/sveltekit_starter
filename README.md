@@ -1,11 +1,13 @@
 # Personal Sveltekit Starter
 
-Personal Svelte Project with Three.js and SCSS
+Svelte Template w/ Three.js and SCSS
 
 ### LINKS
 
 1. [Favicon Generator](https://realfavicongenerator.net/)
-2. [Three.js](https://javascript.plainenglish.io/3d-with-svelte-and-three-js-f4366f342f9f)
+2. [SVG Backgrounds](https://www.svgbackgrounds.com/)
+3. [SVGs + Svelte](https://blog.tihomir-selak.from.hr/svg-in-svelte-world/)
+4. [Three.js + Svelte](https://javascript.plainenglish.io/3d-with-svelte-and-three-js-f4366f342f9f)
 
 ### SET UP
 
