@@ -11,5 +11,5 @@
 </main>
 
 <style lang="scss">
-
+@import '../global/sass/App.scss';
 </style>

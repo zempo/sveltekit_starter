@@ -1,0 +1,31 @@
+@import 'config';
+
+/*
+    HEADERS
+----------------*/
+%header1 {
+	text-align: center;
+	// font-family: $fontPrimary;
+	line-height: 1.25;
+	margin-bottom: 1rem;
+	font-weight: 800;
+	// color: map-get($colors, app-txt);
+	@include font-size($h1-font-sizes);
+}
+
+/*
+    COMPONENTS
+----------------*/
+%appgrid {
+	list-style-type: none;
+	display: flex;
+}
+
+/*
+    PAGES
+----------------*/
+%pg {
+	min-height: 100vh;
+	max-width: 1200px;
+	margin: auto;
+}

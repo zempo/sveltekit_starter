@@ -1,0 +1,6 @@
+@import 'config';
+@import 'utils';
+
+h1 {
+	color: map-get($colors, success);
+}
