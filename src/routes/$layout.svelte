@@ -4,5 +4,5 @@
 </script>
 
 <Header />
-<slot></slot>
+<slot/>
 <Footer />

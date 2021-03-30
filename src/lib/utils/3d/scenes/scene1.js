@@ -83,7 +83,7 @@ const material = new MeshBasicMaterial({
 const cube = new Mesh(GEOS.cube, material);
 let renderer;
 scene.add(cube);
-camera.position.z = 5;
+camera.position.z = 3;
 scene.add(camera);
 
 //------------------------------------------
@@ -100,7 +100,7 @@ gui.add(cube, 'visible');
 gui.add(material, 'wireframe');
 
 gui.addColor(controlNodes, 'color').onChange(() => {
-	cube.color.set(controlNodes.color);
+	material.color.set(controlNodes.color);
 });
 
 //------------------------------------------
@@ -119,9 +119,8 @@ const animate = () => {
 };
 
 const resize = () => {
-	// eslint-disable-next-line no-undef
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	camera.aspect = aspect;
+	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 };
 
@@ -131,8 +130,9 @@ export const createScene = (el) => {
 	controls.enableDamping = true;
 
 	renderer = new WebGLRenderer({ antialias: true, canvas: el });
+
 	resize();
-	animate();
+	animate(el);
 };
 
 window.addEventListener('resize', resize);

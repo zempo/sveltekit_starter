@@ -10,5 +10,5 @@
 <canvas bind:this={el}></canvas>
 
 <style lang="scss">
-@import '$lib/sass/App.scss';
+@import '../../sass/App.scss';
 </style>

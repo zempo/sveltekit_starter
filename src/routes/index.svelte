@@ -8,7 +8,7 @@
 </svelte:head>
 
 <main class="pg home-pg">
-	<h1>Welcome <HomeIcon size="1.5x" class="red" focusable="false" /> </h1>
+	<h1>Welcome <HomeIcon size="1x" class="red" focusable="false" /> </h1>
 </main>
 
 <style lang="scss">
