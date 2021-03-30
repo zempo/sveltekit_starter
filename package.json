@@ -30,6 +30,7 @@
 		"cookie": "^0.4.1",
 		"dat.gui": "^0.7.7",
 		"gsap": "^3.6.1",
+		"svelte-mono-icons": "^1.1.0",
 		"three": "^0.126.1"
 	}
 }

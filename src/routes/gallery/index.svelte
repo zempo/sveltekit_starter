@@ -1,8 +1,8 @@
-<script></script>
 
-<main class="pg about-pg">
-<h1>About</h1>
+<main class="pg gallery-pg">
 </main>
+<nav>
+</nav>
 
 <style lang="scss">
 @import '../../lib/sass/App.scss';

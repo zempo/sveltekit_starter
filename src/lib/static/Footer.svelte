@@ -1,11 +1,22 @@
 <script>
-import {sym} from '$lib/global/symbols.js'
+import {sym as s} from '$lib/global/symbols.js'
+
+let d = new Date();
+let yr = d.getFullYear();
+
 </script>
  
 <footer>
-<h2>{@html $sym.copy}</h2>
-</footer>
+<h2>
+Copyright {@html s.copy} {yr} 
+<a href="https://solomonzelenko.dev/" target="_blank" rel="noopener noreferrer">
+Solomon Zelenko
+</a>.
+<br />
+All Rights Reserved.
+</h2>
+</footer> 
 
 <style lang="scss">
-@import '$lib/sass/App.scss';
+@import '../sass/App.scss';
 </style>
