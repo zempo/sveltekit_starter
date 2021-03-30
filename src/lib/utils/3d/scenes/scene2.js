@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import * as THREE from 'three';
+// eslint-disable-next-line no-unused-vars
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as dat from 'dat.gui';
 import gsap from 'gsap';
@@ -60,19 +61,42 @@ const GEOS = {
 	sphere: new THREE.SphereBufferGeometry(0.5, 100, 100)
 };
 
-const material = new THREE.MeshBasicMaterial({ color: controlNodes.color });
-const cube = new THREE.Mesh(GEOS.cube, material);
+const material = new THREE.MeshBasicMaterial({
+	color: controlNodes.color,
+	wireframe: controlNodes.wireframe,
+	side: THREE.DoubleSide
+});
+const sphere = new THREE.Mesh(GEOS.sphere, material);
 let renderer;
-scene.add(cube);
+scene.add(sphere);
 camera.position.z = 5;
+
+//------------------------------------------
+/**
+ * DEBUG
+ */
+gui.add(sphere.position, 'x').min(-3).max(3).step(0.01).name('Sphere Left/Right');
+gui.add(sphere.position, 'y').min(-3).max(3).step(0.01).name('Sphere Elevation');
+gui.add(sphere.position, 'z').min(-3).max(3).step(0.01).name('Sphere Front/Back');
+
+// Toggle visibility
+gui.add(sphere, 'visible');
+// Toggle wireframe
+gui.add(material, 'wireframe');
+
+gui.addColor(controlNodes, 'color').onChange(() => {
+	sphere.color.set(controlNodes.color);
+});
+
+//------------------------------------------
 
 const clock = new THREE.Clock();
 
 const animate = () => {
 	const elapsedTime = clock.getElapsedTime();
 
-	cube.rotation.x = elapsedTime * 0.01;
-	cube.rotation.y = elapsedTime * 0.01;
+	sphere.rotation.x = elapsedTime * 0.01;
+	sphere.rotation.y = elapsedTime * 0.01;
 
 	renderer.render(scene, camera);
 

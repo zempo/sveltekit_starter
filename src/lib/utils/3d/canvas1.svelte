@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { createScene } from "./scenes/scene";
+  import { createScene } from "./scenes/scene1";
   let el;
   onMount(() => {
     createScene(el)
@@ -10,5 +10,5 @@
 <canvas bind:this={el}></canvas>
 
 <style lang="scss">
-@import '../global/sass/App.scss';
+@import '$lib/sass/App.scss';
 </style>

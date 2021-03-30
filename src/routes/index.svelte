@@ -1,15 +1,15 @@
 <script>
-	import Pagination from '$lib/Pagination.svelte';
+	import Footer from '$lib/static/Footer.svelte';
 </script>
-
+ 
 <svelte:head>
 	<title>Welcome</title>
 </svelte:head>
 
-<main>
-	<h1>Hello world!</h1>
-</main>
+<section class="pg home-pg">
+	<h1>Hello, there</h1>
+</section>
 
 <style lang="scss">
-@import '../global/sass/App.scss';
+@import '$lib/sass/App.scss';
 </style>
