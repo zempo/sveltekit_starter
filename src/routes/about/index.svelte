@@ -1,4 +1,5 @@
-<script></script>
+<script>
+</script>
 
 <main class="pg about-pg">
 <h1>About</h1>
