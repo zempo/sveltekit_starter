@@ -1,8 +1,8 @@
 <script>
-import Canvas1 from '$lib/utils/3d/Canvas1.svelte'
+import Scene1 from '$lib/utils/3d/Scene1.svelte'
 </script>
 
-<Canvas1 />
+<Scene1 />
 
 <style lang="scss">
 @import '../../lib/sass/App.scss';
